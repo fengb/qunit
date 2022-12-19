@@ -1,6 +1,6 @@
 import Logger from '../logger';
 import config from './config';
-import onUncaughtException from './on-uncaught-exception';
+import core from '.';
 
 /**
  * Handle a window.onerror error.
@@ -32,7 +32,7 @@ export default function onWindowError (details) {
 
   const err = new Error(details.message);
   err.stack = details.stacktrace || details.fileName + ':' + details.lineNumber;
-  onUncaughtException(err);
+  core.onUncaughtException(err);
 
   return false;
 }
